@@ -217,9 +217,12 @@ texto_pdf <- lapply(lista_pdf, pdf_text)%>%
 tabla_final <- tabla_final %>%
   mutate(texto_acuerdo = texto_pdf)
 
+write_rds(tabla_final, paste0("tabla_final", Sys.Date(), ".rds"))
+
 setwd("C:/Users/miguel.mora/OneDrive - UNIVERSIDAD ANDRES BELLO/Escritorio/tesis_final/tabla_final")
 
 write.csv2(tabla_final, "tabla_final.csv")
+
 
 
 
