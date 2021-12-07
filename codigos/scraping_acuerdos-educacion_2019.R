@@ -198,12 +198,18 @@ tabla_final <- arrange(tabla_final, nombre_archivo)
 
 walk2(tabla_final$link_final, tabla_final$nombre_archivo, download.file, mode = "wb")
 
+
+#Se crea una lista de los pdfs de la carpeta /datos_2019
+
 getwd()
 
 setwd("C:/Users/miguel.mora/OneDrive - UNIVERSIDAD ANDRES BELLO/Escritorio/tesis_final/datos_2019")
 
 lista_pdf <- list.files(path=getwd(), pattern=NULL, all.files=FALSE,
            full.names=FALSE)
+
+
+#Se transforman los pdf a texto y se consolida la tabla final
 
 texto_pdf <- lapply(lista_pdf, pdf_text)%>%
   as.character()
@@ -213,7 +219,7 @@ tabla_final <- tabla_final %>%
 
 setwd("C:/Users/miguel.mora/OneDrive - UNIVERSIDAD ANDRES BELLO/Escritorio/tesis_final/tabla_final")
 
-write_csv(tabla_final, "tabla_final.csv")
+write.csv2(tabla_final, "tabla_final.csv")
 
 
 
